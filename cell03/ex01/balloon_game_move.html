@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Cellule3.1</title>
+	<script>
+		let size = 200;
+		const n = 20;
+		window.onload = () => {
+			for (let i = 0; i < n; i ++) {
+				let div = document.createElement('div');
+				div.id = 'balloon' + i;
+				div.className = 'balloon';
+				setCircleSize(div.style, size);
+				setCircleColor(div.style);
+				randomPosition(div.style);
+				div.addEventListener('click', (event) => increaseSize(event));
+				div.addEventListener('mouseleave', (event) => decreaseSize(event));
+				document.body.appendChild(div);
+			}
+			// setInterval(() => {
+			// 	console.log('interval');
+			// 	const classes = document.getElementsByClassName('balloon');
+			// 	for(const element of classes) {
+			// 		randomPosition(element.style);
+			// 	}
+			// }, 1000)
+			const classes = document.getElementsByClassName('balloon');
+			for(const element of classes) {
+				movePosition(element.style);
+			}
+		}
+		function setCircleSize(style, size) {
+			size = size > 420 || size < 200 ? 200 : size;
+			style.width = size + 'px';
+			style.height = size + 'px';
+			style.borderRadius = size / 2 + 'px';
+		}
+		function setCircleColor(style) {
+			const cs = ['rgb(229, 57, 53)', 'rgb(49, 94, 38)', 'rgb(37, 101, 174)'];
+			const {backgroundColor} = style;
+			const ci = cs.findIndex(c => c === backgroundColor);
+			style.backgroundColor = (ci < 0 || ci === cs.length - 1) ? cs[Math.floor(Math.random() * cs.length)] : cs[ci + 1];
+			style.border = '1px snow solid'
+		}
+		function increaseSize(event) {
+			const incs = 10;
+			const {style} = event.target;
+			let size = +style.width.substring(0, style.width.length - 2);
+			setCircleSize(style, size + incs);
+			setCircleColor(style, +size + incs);
+			// randomPosition(style);
+		}
+		function decreaseSize(event) {
+			const decs = 5;
+			const {style} = event.target;
+			let size = style.width.split('px')[0];
+			setCircleSize(style, +size - decs);
+		}
+		function randomPosition(style) {
+			let size = style.width.split('px')[0];
+			const {innerWidth, innerHeight} = window;
+			const x = Math.floor(Math.random() * (innerWidth - size));
+			const y = Math.floor(Math.random() * (innerHeight - size));
+			style.position = 'absolute';
+			style.left = x + 'px';
+			style.top = y + 'px';
+		}
+		function movePosition(style) {
+			let size = style.width.split('px')[0];
+			const {innerWidth, innerHeight} = window;
+			const x2 = Math.floor(Math.random() * (innerWidth - size));
+			const y2 = Math.round(Math.random() * 1) === 0 ? 0 : innerHeight - size ;
+			style.position = 'absolute';
+			const move = Math.ceil(Math.random() * 20);
+			let xd = 1;
+			let yd = 1;
+			setInterval(() => {
+				const x1 = +style.left.split('px')[0];
+				const y1 = +style.top.split('px')[0];
+				xd = (x1 > innerWidth - size) ? -1 : (x1 < 0) ? 1 : xd; 
+				yd = (y1 > innerHeight - size) ? -1 : (y1 < 0) ? 1 : yd; 
+				style.left = (x1 + xd * move) + 'px';
+				style.top = (y1 + yd * move) + 'px';
+			}, 25);
+		}
+	</script>
+</head>
+<body>
+	<!-- <div class="balloon" onclick="resize()"></div> -->
+</body>
+</html>
