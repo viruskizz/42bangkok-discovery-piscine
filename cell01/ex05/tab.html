@@ -4,18 +4,17 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Cellule0.5 HTML</title>
+	<title>Cellule1.5 HTML</title>
 	<style>
-		table {
-			width: 100%;
-			/* border: 1px solid slategray; */
-			border-spacing: 0px;
-			border: 1px solid slategray;
-		}
-		th,td {
-			height: 40px;
-			text-align: left;
-			font-weight: normal;
+		.box {
+			height: 180px;
+			font-weight: 500;
+			display: flex;
+			flex: 1;
+			flex-direction: row;
+			justify-content: start;
+			align-items: center;
+			flex-wrap: wrap;
 			border: 1px solid slategray;
 		}
 		.container {
@@ -26,10 +25,10 @@
 <body>
 	<div class="container">
 		<hr>
-		<table>
-			<th class="box" style="background-color: aquamarine;">First cell lorem poem ipsum</th>
-			<th class="box" style="background-color: blanchedalmond;">Second Cell lorem poem ipsum</th>
-		</table>
+		<div style="display: flex;">
+			<div class="box" style="background-color: aquamarine;">First cell lorem poem ipsum</div>
+			<div class="box" style="background-color: blanchedalmond;">Second cell lorem poem ipsum</div>
+		</div>
 	</div>
 </body>
 </html>

@@ -4,22 +4,19 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Cellule0.5 HTML</title>
+	<title>Cellule1.5 HTML</title>
 	<style>
-		.box {
-			height: 180px;
-			font-weight: 500;
-			display: flex;
-			flex: 1;
-			flex-direction: row;
-			justify-content: start;
-			align-items: center;
-			flex-wrap: wrap;
+		table {
+			width: 100%;
+			/* border: 1px solid slategray; */
+			border-spacing: 0px;
+			border: 1px solid slategray;
 		}
-		@media only screen and (max-width: 600px) {
-			.box {
-				background-color: lightblue;
-			}
+		th, td {
+			height: 40px;
+			text-align: left;
+			font-weight: normal;
+			border: 1px solid slategray;
 		}
 		.container {
 			margin: 20px 10% 20px 10%
@@ -29,10 +26,10 @@
 <body>
 	<div class="container">
 		<hr>
-		<div style="display: flex;">
-			<div class="box" style="background-color: aquamarine;">First cell</div>
-			<div class="box" style="background-color: blanchedalmond;">Second Cell</div>
-		</div>
+		<table>
+			<th class="box" style="background-color: aquamarine;">First cell lorem poem ipsum</th>
+			<th class="box" style="background-color: blanchedalmond;">Second Cell lorem poem ipsum</th>
+		</table>
 	</div>
 </body>
 </html>
