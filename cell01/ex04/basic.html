@@ -31,6 +31,10 @@
 			object-fit: cover;
 			object-position: 50% 50%;
 		}
+		a {
+			font-size: 0.8rem;
+			margin-top: 8px;
+		}
 		.container {
 			margin: 20px 10% 20px 10%
 		}
@@ -39,6 +43,12 @@
 			flex-direction: row;
 			justify-content: center;
 			gap: 10px;
+		}
+		.box {
+			display: flex;
+			flex: 1;
+			flex-direction: column;
+			align-items: center
 		}
 		.footer {
 			display: flex;
@@ -53,16 +63,22 @@
 <body>
 	<h1>Piscine WEB !!</h1>
 	<div class="container content">
-		<a href="https://www.uniqlo.com/th/th/spl/ut/final-fantasy" target="_blank" style="flex: 1">
+		<div class="box">
 			<img
 				src="http://im.uniqlo.com/global-cms/spa/res042d198b12ed6883e17d4d56a04eae01fr.jpg"
 				alt="ff-uniqlo">
-		</a>
-		<a href="https://freetrial.finalfantasyxiv.com/na/" target="_blank" style="flex: 1">
+			<a href="https://www.uniqlo.com/th/th/spl/ut/final-fantasy/" target="_blank">
+				https://www.uniqlo.com/th/th/spl/ut/final-fantasy/
+			</a>
+		</div>
+		<div class="box">
 			<img
 				src="https://static1.makeuseofimages.com/wordpress/wp-content/uploads/2022/02/Final-Fantasy-XIV-free-trial-webpage.jpg"
 				alt="ff-14">
-		</a>
+			<a href="https://freetrial.finalfantasyxiv.com/na/" target="_blank">
+				https://freetrial.finalfantasyxiv.com/na/
+			</a>
+		</div>
 	</div>
 	<hr>
 	<div class="container footer">
