@@ -1,4 +1,5 @@
-const todo = ['aa', 'bbb', 'ccc'];
+// const todo = ['aa', 'bbb', 'ccc'];
+const todo = [];
 
 window.onload = () => {
 	if (todo.length > 0) {
