@@ -5,52 +5,34 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Cellule3.1</title>
+	<style>
+		#balloon {
+			border: 1px snow solid;
+		}
+	</style>
 	<script>
 		let size = 200;
-		const n = 1;
 		const colors = ['#e53935', '#315e26', '#2565ae'];
 		let ci = 0;
 		window.onload = () => {
-			for (let i = 0; i < n; i ++) {
-				let div = document.createElement('div');
-				div.id = 'balloon' + i;
-				div.className = 'balloon';
-				setCircleSize(div.style, size);
-				setCircleColor(div.style, 0);
-				div.addEventListener('click', (event) => increaseSize(event));
-				div.addEventListener('mouseleave', (event) => decreaseSize(event));
-				document.body.appendChild(div);
-			}
+			const ball = document.getElementById('balloon');
+			setCircleSize(size, ci);
+			ball.addEventListener('click', () => setCircleSize(size + 10, ++ci));
+			ball.addEventListener('mouseleave', () => setCircleSize(size - 5, --ci));
 		}
-		function setCircleSize(style, size) {
-			size = size > 420 || size < 200 ? 200 : size;
+		function setCircleSize(newSize, nci) {
+			const ball = document.getElementById('balloon');
+			style = ball.style;
+			size = newSize > 420 || newSize < 200 ? 200 : newSize;
+			ci = (nci < 0) ? colors.length - 1 : (nci > colors.length - 1) ? 0 : nci;
 			style.width = size + 'px';
 			style.height = size + 'px';
 			style.borderRadius = size / 2 + 'px';
-		}
-		function setCircleColor(style) {
-			ci = ci < 0 ? colors.length - 1 :  ci > colors.length - 1 ? 0 : ci;
 			style.backgroundColor = colors[ci];
-			style.border = '1px snow solid'
-		}
-		function increaseSize(event) {
-			const incs = 10;
-			const {style} = event.target;
-			let size = +style.width.split('px')[0];
-			setCircleSize(style, size + incs);
-			ci++;
-			setCircleColor(style);
-		}
-		function decreaseSize(event) {
-			const decs = 5;
-			const {style} = event.target;
-			let size = +style.width.split('px')[0];
-			setCircleSize(style, size - decs);
-			ci--;
-			setCircleColor(style);
 		}
 	</script>
 </head>
 <body>
+	<div id="balloon"></div>
 </body>
 </html>
