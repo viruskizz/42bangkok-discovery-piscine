@@ -1,4 +1,4 @@
-const names = ['header', 'home', 'aboutme', 'footer'];
+const names = ['header', 'home', 'aboutme', 'education', 'expertise', 'footer'];
 const path = './components';
 for (const name of names) {
 	fetch(`${path}/${name}.html`)
