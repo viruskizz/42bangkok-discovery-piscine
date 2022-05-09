@@ -1,6 +1,13 @@
-const names = ['header', 'home', 'aboutme', 'education', 'expertise', 'footer'];
+const components = [
+	'navbar',
+	'home',
+	'aboutme',
+	'education',
+	'expertise',
+	'footer'
+];
 const path = './components';
-for (const name of names) {
+for (const name of components) {
 	fetch(`${path}/${name}.html`)
 		.then(response => response.text())
 		.then(data => {
