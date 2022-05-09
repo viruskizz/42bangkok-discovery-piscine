@@ -6,7 +6,7 @@ else
     msg=$1
 fi
 echo "MESSAGE = $msg"
-cp -r rush/* docs/
+cp -RT rush docs
 git status
 git add rush docs
 git commit -m "$msg"
