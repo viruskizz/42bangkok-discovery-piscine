@@ -4,6 +4,7 @@ const components = [
 	'aboutme',
 	'education',
 	'expertise',
+	'activities',
 	'footer'
 ];
 const path = './components';
