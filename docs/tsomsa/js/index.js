@@ -1,5 +1,5 @@
 function printPdf() {
-  window.print()
+  window.open('files/portfolio.pdf')
 }
 
 function toggleMenu() {
