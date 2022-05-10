@@ -6,6 +6,7 @@ const components = [
 	'expertise',
 	'certified',
 	'activities',
+	'thisproject',
 	'footer'
 ];
 const path = './components';
