@@ -1,9 +1,5 @@
-// const todo = ['aa', 'bbb', 'ccc'];
 let todos = [];
 const key = 'todo';
-// const saveTodos = () => Cookies.set(key, JSON.stringify(todos));
-const saveTodos = () => Cookies.set(key, JSON.stringify(todos));
-const getTodos = () => Cookies.get(key) ? JSON.parse(Cookies.get(key)) : undefined;
 
 $('document').ready(() => {
 	const savedTodo = getTodos();
@@ -45,4 +41,18 @@ function createListElement(id, value) {
 		text: value,
 		click: removeItem,
 	});
+}
+
+function saveTodos() {
+	const json = JSON.stringify(todos);
+	document.cookie = `${key}=${encodeURIComponent(json)};`
+}
+
+function getTodos() {
+	const cookies = document.cookie.split(';');
+	if (!cookies) {
+		return;
+	}
+	const data = cookies.find(c => c.split('=')[0] == key);
+	return data ? JSON.parse(decodeURIComponent(data.split('=')[1])) : undefined;
 }

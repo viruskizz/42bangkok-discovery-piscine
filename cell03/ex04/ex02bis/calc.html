@@ -7,41 +7,41 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<title>Cellule3.42</title>
 	<script>
-		let run;
 		$('document').ready(() => {
-			setTimeout(() => {
-				if (!run) {
-					alert('Please, use me...');
-				}
+			cal();
+			setInterval(() => {
+				alert('Please, use me...');
 			}, 30 * 1000);
 		})
 		function cal() {
-			run = true;
 			let result;
-			let text;
-			const nb1 = +$('#number1').val();
-			const nb2 = +$('#number2').val();
+			const nb1 = parseFloat($('#number1').val());
+			const nb2 = parseFloat($('#number2').val());
 			const sign = $( "#sign option:selected" ).text();
-			if (nb1 < 0 || nb2 < 0) {
-				text = 'Error :('
-			} else if (sign === '+') {
-				result = nb1 + nb2
-			} else if (sign === '-') {
-				result = nb1 - nb2
-			} else if (sign === '*') {
-				result = nb1 * nb2
-			} else if (sign === '%' && nb2 === 0) {
-				text = "It's over 9000!";
-			} else if (sign === '/' && nb2 === 0) {
-				text = "It's over 9000!";
-			}  else if (sign === '/') {
-				result = nb1 / nb2
-			} else {
-				result = nb1 % nb2
+			if (!Number.isInteger(nb1) ||
+				!Number.isInteger(nb2) ||
+				nb1 < 0 ||
+				nb2 < 0) {
+				alert("Error '(");
+				return;
 			}
-			text = result === undefined ? text : `${nb1} ${sign} ${nb2} = ${result}`;
-			console.log(text);
-			alert(text);
+			if (sign === '+') {
+				result = nb1 + nb2;
+			} else if (sign === '-') {
+				result = nb1 - nb2;
+			} else if (sign === '*') {
+				result = nb1 * nb2;
+			} else if (sign === '%' && nb2 === 0) {
+				result = "It's over 9000!";
+			} else if (sign === '/' && nb2 === 0) {
+				result = "It's over 9000!";
+			}  else if (sign === '/') {
+				result = nb1 / nb2;
+			} else {
+				result = nb1 % nb2;
+			}
+			console.log(result);
+			alert(result);
 		}
 	</script>
 </head>

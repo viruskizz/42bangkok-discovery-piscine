@@ -51,7 +51,7 @@ function createListElement(id, value) {
 
 function saveTodos() {
 	const json = JSON.stringify(todos);
-	document.cookie = `${key}=${json};`
+	document.cookie = `${key}=${encodeURIComponent(json)};`
 }
 
 function getTodos() {
@@ -60,5 +60,5 @@ function getTodos() {
 		return;
 	}
 	const data = cookies.find(c => c.split('=')[0] == key);
-	return data ? JSON.parse(data.split('=')[1]) : undefined;
+	return data ? JSON.parse(decodeURIComponent(data.split('=')[1])) : undefined;
 }
